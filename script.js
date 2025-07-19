@@ -1,28 +1,28 @@
 //your JS code here. If required.
-const chandeBtn = document.getElementById("change_button");
-const  resetBtn = document.getElementById("Reset");
+document.getElementById('change_button').addEventListener('click', function() {
+    // Get the input values
+    const blockId = document.getElementById('block_id').value;
+    const color = document.getElementById('colour_id').value;
 
-changeBtn.addEventListener("click", ()=>{
-	const blockId = document.getElementById(block_id).value;
-	const color = document.getElementById("colour_id").value;
-
-	for (let i = 1; i <= 9; i++) {
-		document.getElementById(i.toString()).style.backgroundColor = "transparent";
-	}
-	const selectedBlock = document.getElementById(blockId);
-	if(selectedBlock){
-		selectedBlock.style.background = color;
-	}else{
-		alert("Invalid id")
-	}
-})
-resetBtn.addEventListener("click", () => {
-      // Reset all grid items to transparent
-      for (let i = 1; i <= 9; i++) {
-        document.getElementById(i.toString()).style.backgroundColor = "transparent";
-      }
-
-      // Clear inputs
-      document.getElementById("block_id").value = "";
-      document.getElementById("colour_id").value = "";
+    // Reset all grid items to transparent
+    const items = document.querySelectorAll('.grid-item');
+    items.forEach(item => {
+        item.style.backgroundColor = 'transparent';
     });
+
+    // Change the background color of the specified grid item
+    const selectedItem = document.getElementById(blockId);
+    if (selectedItem) {
+        selectedItem.style.backgroundColor = color;
+    } else {
+        alert('Invalid block ID! Please enter a number between 1 and 9.');
+    }
+});
+
+// Reset button functionality
+document.getElementById('Reset').addEventListener('click', function() {
+    const items = document.querySelectorAll('.grid-item');
+    items.forEach(item => {
+        item.style.backgroundColor = 'transparent';
+    });
+});
